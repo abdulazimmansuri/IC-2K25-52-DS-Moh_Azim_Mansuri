@@ -1,1 +1,102 @@
+#include<iostream>
+#define max 5
+using namespace std;
+class mst
+{
+ int a[max],top1,top2,n;
+ public:
+ mst(){
+ top1=-1;
+ top2=max;
+ }
+ void push1();
+ void pop1();
+ void push2();
+ void pop2();
+ void show1();
+ void show2();
+};
+void mst::push1()
+{ 
+ if(top1+1==top2){
+ cout<<"stack overflows";
+ }
+ else{
+ cout<<"enter value";
+ cin>>n;
+ top1 ++;
+ a[top1]=n;
+ }
+}
+void mst::push2(){
+if(top2-1==top1){
+cout<<"stack overflows";
+}
+else{
+cout<<"enter value";
+cin>>n;
+top2 --;
+a[top2]=n;
+}
+}
+void mst::pop1(){
+ if(top1==-1){
+ cout<<"\nstack underflows"<<endl;
+ }
+ else{
+ n=a[top1];
+ top1--;
+ cout<<"deleted item is "<<n;
+ }
+}
+void mst:: pop2(){
+if(top2==max){
+cout<<"\nstack underflows"<<endl;
+ }
+ else{
+ n=a[top2];
+ top2++;
+ }
+}
+void mst::show1() 
+{
+if(top1==-1){
+cout<<"stack underflows";
+}
+else{
+for (int i=0;i<=top1;i++){
+ cout<<a[i]<<" ";
+}
+}
+}
+void mst::show2(){
+if(top2==max){
+cout<<"stack underflows";
+}
+else{
+for(int i=max-1;i>=top2;i--){
+cout<<a[i]<<" ";
+}
+}
+}
+ int main()
+ { mst s;
+  char c;
+  int choice ;
+   do {
+   cout<<"enter choice 1.push1 2.push2 3.pop1 4.pop2 5.show1 6.show2"<<endl;
+   cin>>choice;
+   switch(choice){
+   case 1: s.push1();break;
+   case 2: s.push2();break;
+   case 3: s.pop1();break;
+   case 4: s.pop2();break;
+   case 5: s.show1();break;
+   case 6: s.show2();break;
+   }
+   cout<<"do you want to continue?";
+   cin>>c;
+   }while(c=='y'||c=='v');
+   return 0;
+ }
 
