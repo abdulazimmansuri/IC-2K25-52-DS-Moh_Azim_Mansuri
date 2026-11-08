@@ -1,1 +1,66 @@
-
+#include<iostream>
+#define max 5
+using namespace std;
+class sta
+{
+ int a[max],top;
+ public:
+ sta(){
+ top=-1;
+ }
+ void push();
+ void pop();
+ void display();
+ 
+ 
+};
+void sta::push()
+{ int n;
+ cout<<"enter elemnet to push  ";
+ cin>>n;
+ if(top==max-1){
+ cout<<"stack overflows";
+ }
+ else{
+ top++;
+ a[top]=n;
+ }
+}
+void sta::pop(){
+ int d ;
+ if(top==-1){
+ cout<<"\nstack underflows"<<endl;
+ }
+ else{
+ d=a[top];
+ top--;
+ cout<<"deleted item is "<<d;
+ }
+}
+void sta::display() 
+{
+if(top==-1){
+cout<<"stack underflows";
+}
+else{
+for (int i=top;i>=0;i--)
+ cout<<a[i]<<" ";
+}
+}
+ int main()
+ { sta s;
+  char c;
+  int choice ;
+   do {
+   cout<<"enter choice 1push 2pop 3display"<<endl;
+   cin>>choice;
+   switch(choice){
+   case 1: s.push();break;
+   case 2: s.pop();break;
+   case 3: s.display();break;
+   }
+   cout<<"do you want to continue?";
+   cin>>c;
+   }while(c=='y'||c=='v');
+   return 0;
+ }
