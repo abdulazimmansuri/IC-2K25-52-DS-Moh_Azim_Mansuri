@@ -1,1 +1,79 @@
-
+#include<iostream>
+#define max 10
+using namespace std;
+class Arr
+{
+ int a[max],size,maximum,minimum;
+ public:
+ void get();
+ void put();
+ void insert();
+ void maxi();
+ void mini();
+ void reverse();
+ 
+};
+void Arr::get()
+{
+ cout<<"enter size of array";
+ cin>>size;
+ cout<<"\nenter elements"<<endl;
+ for(int i=0;i<size;i++){
+  cin>>a[i];
+ }
+}
+void Arr::put(){
+ cout<<"array elements are :"<<endl;
+ for(int i=0;i<size;i++){
+ cout<<a[i]<<endl;
+ }
+}
+void Arr::insert()
+{
+ int p,d;
+ cout<<"insert position and data to insert";
+ cin>>p>>d;
+ for(int j=size-1;j>=p-1;j--){
+ a[j+1]=a[j];
+ }
+ a[p-1]=d;
+ size=size+1;
+ put();
+ }
+ void Arr::maxi()
+ {
+ maximum=a[0];
+ for(int i=0;i<size;i++){
+ if(a[i]>maximum){
+ maximum=a[i];
+ }
+ }
+ cout<<"maximum="<<maximum;
+ }
+ void Arr::mini()
+ {
+ minimum=a[0];
+ for(int i=0;i<size;i++){
+ if(a[i]<minimum)
+ { minimum=a[i];
+ }
+ }
+ cout<<"\nminimum="<<minimum;
+ }
+ void Arr::reverse(){
+ cout<<"\narray in reverse order are:";
+ for(int i=size-1;i>=0;i--){
+ cout<<a[i]<<endl;
+ }
+ }
+ int main()
+ { Arr s;
+   s.get();
+   s.put();
+   s.insert();
+   s.maxi();
+   s.mini();
+   s.reverse();
+   
+   return 0;
+ }
