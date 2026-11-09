@@ -1,1 +1,113 @@
-
+#include<iostream>
+#define max 3 
+using namespace std;
+class doenq
+{
+ int a[max],f,r,x;
+ public:
+ doenq()
+ { f=r=-1;
+ }
+ void insertr();
+ void deletef();
+ void insertf();
+ void deleter();
+ void display();
+};
+void doenq::insertr()
+{
+ if(f==((r+1)%max)){
+ cout<<"queue overflows";
+ }
+ else{
+ cout<<"enter element";
+ cin>>x;
+ if(r==-1){
+  f=r=0;
+ }
+ else{
+  r=((r+1)%max);
+  }
+  a[r]=x;
+ }
+ }
+ void doenq::deletef()
+ {
+ if(f==-1)
+ {
+  cout<<"queue underflows";
+ }
+ else{
+ if(f==r){
+ f=r=-1;
+ }
+ else{
+ f=((f+1)%max);
+ }
+ }
+ }
+ void doenq::insertf()
+ {
+ if(r==(max+f-1)%max){
+  cout<<"queue overdflows";
+ }
+ else{
+ cout<<"enter element to insert";
+ cin>>x;
+ if(r==-1){
+ f=r=0;
+ }
+ else{
+ f=((max+f-1)%max);
+ }
+ a[f]=x;
+ }
+ 
+ }
+ void doenq::deleter()
+ {
+ if(f==-1){
+ cout<<"queue underflows";
+ }
+ else{
+ if(f==r){
+ f=r=-1;
+ }
+ else{
+ r=((max+r-1)%max);
+ }
+ }
+ }
+ void doenq:: display()
+ {
+ if(f==-1){
+  cout<<"queue is empty";
+ }
+ else{
+  for(int i=f;i!=r;i=(i+1)%max){
+  cout<<a[i]<<" ";
+  }
+  cout<<a[r];
+ }
+ 
+ }
+ int main()
+ { doenq dq;
+   int choice;
+   char c;
+   do{
+   cout<<"enter choice 1 insertr 2 deletef 3 insertf 4 deleter 5 display";
+   cin>>choice;
+   switch(choice)
+   {
+   case 1: dq.insertr();break;
+   case 2: dq.deletef();break;
+   case 3: dq.insertf();break;
+   case 4: dq.deleter();break;
+   case 5: dq.display();break;
+   }
+   cout<<"do you want to continue";
+   cin>>c;
+   }while(c=='y'||c=='v');
+   return 0;
+ }
